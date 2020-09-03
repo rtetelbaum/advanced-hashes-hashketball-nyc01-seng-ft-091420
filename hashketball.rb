@@ -126,7 +126,7 @@ def game_hash
     }
   }
 end
-
+binding.pry
 def num_points_scored(name)
   game_hash.each do |location, team_data|
     team_data.each do |team_attribute, team_info|
