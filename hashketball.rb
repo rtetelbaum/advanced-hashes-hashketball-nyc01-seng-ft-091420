@@ -160,32 +160,25 @@ def team_names
 end
 
 def player_numbers(team)
-  if game_hash == team
-    game_hash.collect do |location, team_data|
-      team_data[:players].each do |player_data|
-        player_data[:number]
+  numbers = []
+  game_hash.each do |location, team_data|
+    team_data.each do |team_attribute, team_info|
+      if team_info == team
+        team_data.each do |team_attribute, team_info|
+          if team_attribute == :players
+            team_info.each do |array|
+              array.each do |player_attribute, player_stat|
+                if player_attribute == :number
+                  numbers << player_stat
+                end
+              end
+            end
+          end
+        end
       end
     end
   end
-  # numbers = []
-  # game_hash.each do |location, team_data|
-  #   team_data.each do |team_attribute, team_info|
-  #     if team_info == team
-  #       team_data.each do |team_attribute, team_info|
-  #         if team_attribute == :players
-  #           team_info.each do |array|
-  #             array.each do |player_attribute, player_stat|
-  #               if player_attribute == :number
-  #                 numbers << player_stat
-  #               end
-  #             end
-  #           end
-  #         end
-  #       end
-  #     end
-  #   end
-  # end
-  # numbers.sort
+  numbers.sort
 end
 
 def player_stats(name)
