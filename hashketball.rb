@@ -173,17 +173,7 @@ end
 
 def player_stats(name)
   game_hash.each do |location, team_data|
-    team_data.each do |team_attribute, team_info|
-      if team_attribute == :players
-        team_info.each do |array|
-          array.each do |player_attribute, player_stat|
-            if player_stat == name
-              return array
-            end
-          end
-        end
-      end
-    end
+    
   end
 end
 
