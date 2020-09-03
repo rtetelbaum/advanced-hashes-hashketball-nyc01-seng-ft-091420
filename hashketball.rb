@@ -160,13 +160,14 @@ def team_names
 end
 
 def player_numbers(team)
-  game_hash.collect.sort do |location, team_data|
+  numbers = game_hash.collect do |location, team_data|
     if team_data[:team_name] == team
       team_data[:players].each do |player_data|
         player_data[:number]
       end
     end
   end
+  numbers.sort
   # numbers = []
   # game_hash.each do |location, team_data|
   #   team_data.each do |team_attribute, team_info|
