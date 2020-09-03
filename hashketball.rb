@@ -129,7 +129,7 @@ end
 
 def num_points_scored(name)
 players = game_hash[:home][:players].merge(game_hash[:away][:players])
-binding.pry
+  binding.pry
   # game_hash.each do |location, team_data|
   #   team_data.each do |team_attribute, team_info|
   #     if team_attribute == :players
