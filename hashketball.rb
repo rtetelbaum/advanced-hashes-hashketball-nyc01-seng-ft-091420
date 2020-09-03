@@ -130,23 +130,23 @@ end
 def num_points_scored(name)
 players = game_hash[:home][:players].merge(game_hash[:away][:players])
 binding.pry
-  game_hash.each do |location, team_data|
-    team_data.each do |team_attribute, team_info|
-      if team_attribute == :players
-        team_info.each do |array|
-          array.each do |player_attribute, player_stat|
-            if player_stat == name
-              array.each do |player_attribute, player_stat|
-                if player_attribute == :points
-                  return player_stat
-                end
-              end
-            end
-          end
-        end
-      end
-    end
-  end
+  # game_hash.each do |location, team_data|
+  #   team_data.each do |team_attribute, team_info|
+  #     if team_attribute == :players
+  #       team_info.each do |array|
+  #         array.each do |player_attribute, player_stat|
+  #           if player_stat == name
+  #             array.each do |player_attribute, player_stat|
+  #               if player_attribute == :points
+  #                 return player_stat
+  #               end
+  #             end
+  #           end
+  #         end
+  #       end
+  #     end
+  #   end
+  # end
 end
 
 def shoe_size(name)
