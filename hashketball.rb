@@ -129,19 +129,9 @@ end
 
 def num_points_scored(name)
   game_hash.each do |location, team_data|
-    team_data.each do |team_attribute, team_info|
-      if team_attribute == :players
-        team_info.each do |array|
-          array.each do |player_attribute, player_stat|
-            if player_stat == name
-              array.each do |player_attribute, player_stat|
-                if player_attribute == :points
-                  return player_stat
-                end
-              end
-            end
-          end
-        end
+    team_data[:players].each do |player_data|
+      if player_data[:player_name] == name
+        return player_data[:points]
       end
     end
   end
@@ -149,19 +139,9 @@ end
 
 def shoe_size(name)
   game_hash.each do |location, team_data|
-    team_data.each do |team_attribute, team_info|
-      if team_attribute == :players
-        team_info.each do |array|
-          array.each do |player_attribute, player_stat|
-            if player_stat == name
-              array.each do |player_attribute, player_stat|
-                if player_attribute == :shoe
-                  return player_stat
-                end
-              end
-            end
-          end
-        end
+    team_data[:players].each do |player_data|
+      if player_data[:player_name] == name
+        return player_data[:shoe]
       end
     end
   end
@@ -169,63 +149,33 @@ end
 
 def team_colors(team)
   game_hash.each do |location, team_data|
-    team_data.each do |team_attribute, team_info|
-      if team_info == team
-        team_data.each do |team_attribute, team_info|
-          if team_attribute == :colors
-            return team_info
-          end
-        end
-      end
+    if team_data[:team_name] == team
+      return team_data[:colors]
     end
   end
 end
 
 def team_names
-  teams = []
-  game_hash.each do |location, team_data|
-    team_data.each do |team_attribute, team_info|
-      if team_attribute == :team_name
-        teams << team_info
-      end
-    end
-  end
-  teams
+  game_hash.collect { |location, team_data| team_data[:team_name] }
 end
 
 def player_numbers(team)
   numbers = []
   game_hash.each do |location, team_data|
-    team_data.each do |team_attribute, team_info|
-      if team_info == team
-        team_data.each do |team_attribute, team_info|
-          if team_attribute == :players
-            team_info.each do |array|
-              array.each do |player_attribute, player_stat|
-                if player_attribute == :number
-                  numbers << player_stat
-                end
-              end
-            end
-          end
-        end
+    if team_data[:team_name] == team
+      team_data[:players].each do |player_data|
+        numbers << player_data[:number]
       end
     end
   end
-  numbers.sort
+  numbers
 end
 
 def player_stats(name)
   game_hash.each do |location, team_data|
-    team_data.each do |team_attribute, team_info|
-      if team_attribute == :players
-        team_info.each do |array|
-          array.each do |player_attribute, player_stat|
-            if player_stat == name
-              return array
-            end
-          end
-        end
+    team_data[:players].each do |player_data|
+      if player_data[:player_name] == name
+        return player_data
       end
     end
   end
@@ -235,18 +185,10 @@ def big_shoe_rebounds
   biggest_size = 0
   rebounds = 0
   game_hash.each do |location, team_data|
-    team_data.each do |team_attribute, team_info|
-      if team_attribute == :players
-        team_info.each do |array|
-          array.each do |player_attribute, player_stat|
-            if player_attribute == :shoe  
-              if player_stat > biggest_size
-                biggest_size = player_stat
-                rebounds = array[:rebounds]
-              end
-            end
-          end
-        end
+    team_data[:players].each do |player_data|
+      if player_data[:shoe] > biggest_size
+        biggest_size = player_data[:shoe]
+        rebounds = player_data[:rebounds]
       end
     end
   end
