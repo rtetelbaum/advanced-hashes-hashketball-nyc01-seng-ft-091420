@@ -185,20 +185,25 @@ def big_shoe_rebounds
   biggest_size = 0
   rebounds = 0
   game_hash.each do |location, team_data|
-    team_data.each do |team_attribute, team_info|
-      if team_attribute == :players
-        team_info.each do |array|
-          array.each do |player_attribute, player_stat|
-            if player_attribute == :shoe  
-              if player_stat > biggest_size
-                biggest_size = player_stat
-                rebounds = array[:rebounds]
-              end
-            end
-          end
-        end
+    team_data[:players].each do |player_data|
+      if player_data[:shoe] > biggest_size
+        rebounds = player_data[:rebounds]
       end
     end
+    # team_data.each do |team_attribute, team_info|
+    #   if team_attribute == :players
+    #     team_info.each do |array|
+    #       array.each do |player_attribute, player_stat|
+    #         if player_attribute == :shoe  
+    #           if player_stat > biggest_size
+    #             biggest_size = player_stat
+    #             rebounds = array[:rebounds]
+    #           end
+    #         end
+    #       end
+    #     end
+    #   end
+    # end
   end
   rebounds
 end
