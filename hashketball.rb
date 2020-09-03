@@ -162,23 +162,9 @@ end
 def player_numbers(team)
   numbers = []
   game_hash.each do |location, team_data|
-    team_data.each do |team_attribute, team_info|
-      if team_info == team
-        team_data.each do |team_attribute, team_info|
-          if team_attribute == :players
-            team_info.each do |array|
-              array.each do |player_attribute, player_stat|
-                if player_attribute == :number
-                  numbers << player_stat
-                end
-              end
-            end
-          end
-        end
-      end
-    end
+    
   end
-  numbers.sort
+  numbers
 end
 
 def player_stats(name)
