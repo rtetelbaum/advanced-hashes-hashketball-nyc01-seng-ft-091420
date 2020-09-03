@@ -191,20 +191,6 @@ def big_shoe_rebounds
         rebounds = player_data[:rebounds]
       end
     end
-    # team_data.each do |team_attribute, team_info|
-    #   if team_attribute == :players
-    #     team_info.each do |array|
-    #       array.each do |player_attribute, player_stat|
-    #         if player_attribute == :shoe  
-    #           if player_stat > biggest_size
-    #             biggest_size = player_stat
-    #             rebounds = array[:rebounds]
-    #           end
-    #         end
-    #       end
-    #     end
-    #   end
-    # end
   end
   rebounds
 end
